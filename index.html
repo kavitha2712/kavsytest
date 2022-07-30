@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Drug Overdose Deaths Visualization</title>
+    <link rel="stylesheet" type="text/css" href="lib/fullpage.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.10.2/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/fullpage.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            //initialise fullpage.js in jQuery
+            $('#fullpage').fullpage({
+                sectionsColor: ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'],
+                navigation: true,
+                slidesNavigation: true,
+                licenseKey: null,
+            });
+
+            // call fullpage.js methods in jQuery
+            $('#moveSectionUp').click(function (e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSectionUp();
+            });
+
+            $('#moveSectionDown').click(function (e) {
+                e.preventDefault();
+                $.fn.fullpage.moveSectionDown();
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="fullpage">
+    <div class="section">
+        <div class="banner-wrapper">
+            <div class="header-wrapper">
+            </div>
+        </div>
+    </div>
+    
+    <div class="section">
+
+        <div class="about-wrapper">
+            <div class="about-sections">
+                <h1 style="color:white; position:fixed; left:80px; top:800px;">Overview</h1>
+                <p style="color:white; font-size:20px; position:fixed; left:80px; top:850px;"> Drug Overdose remains a major concern in United States. According to CDC, 136 people die every day from an opioid overdose. Nearly 841,000 people have died since 1999 from a drug overdose.</p>
+                <p style="color:white; font-size:20px; position:fixed; left:80px; top:910px;">Opioids currently are the main driver of drug overdose deaths. 72.9% of opioid-involved overdose deaths involve synthetic opioids. Opioids were involved in 49,860 overdose deaths in 2019 (70.6% of all drug overdose deaths).</p>
+                <p style="color:white; font-size:20px; position:fixed; left:80px; top:970px;">Dataset used in the visualization is publicly available at CDC.gov site. This visualization uses only part of the dataset that consists of the Drug overdose death rates within all the states and regions in the Unites States for 2017, 2018 and 2019 years. Some data cleaning and manipulation is performed to add relevant data wherever it was missing.</p>
+                <p style="color:white; font-size:20px; position:fixed; left:80px; top:1060px;">From 2018 to 2019, the largest increase in death rates involving synthetic opioids occurred in the West. Previously, East had the highest increases in deaths involving synthetic opioids. No state experienced a significant decrease from 2018-2019.</p>
+             </div>
+        </div>
+
+    </div>
+
+    <div class="section">
+        <div class="map-section">
+            <h1>Deaths due to Drug Overdose across US States</h1>
+            <div class="btn-wrapper map-btns">
+
+            </div>
+            <div class="map-wrapper"></div>
+        </div>
+    </div>
+    <div class="section bubble-section">
+
+        <div class="bubble-wrapper">
+            <h1>Drug Overdose Bubble Chart</h1>
+            <div class="btn-wrapper bubble-btns">
+
+            </div>
+            <div id="buttons">
+                <a href="#" id="all" class="button active">Statewise Deaths</a>
+                <a href="#" id="murder_range" class="button">Regionwise Deaths</a>
+            </div>
+            <div class="bubble-chart-container">
+                <div class="bubble-wrapper"></div>
+                <div class="legends"></div>
+            </div>
+        </div>
+
+    </div>
+    <div class="section">
+
+        <div class="bar-section-wrapper">
+            <h1>Drug Overdose Bar Diagram</h1>
+            <div class="btn-wrapper bar-btns">
+
+            </div>
+            <div class="bar-wrapper"></div>
+        </div>
+    </div>
+
+    <div class="section">
+         <div class="last-wrapper">
+            <div class="footer-wrapper">
+                <div class="about-sections">
+                <h1 style="color:white;">Conclusion</h1>
+                <p style="color:white; font-size:20px;">​As can be seen from various charts, the total number of overdose deaths in the United States over a period of 3 years, 2017 to 2019, remained quite consistent, without a significant increase. In 2019, 75,643 drug overdose deaths occurred in the United States as per the data available from the CDC. It had a slight increase from 2017 where the total deaths clocked to 70,975. Also, it remains undeniable based on the visualization that out of total deaths, deaths caused by synthetic opioids are significant compared to others. 
+                </p> 
+                <p style="color:white; font-size:20px;">​Through this visualization, I would like to draw user's attention on this epidemic. The misuse of and addiction to opioids—including prescription pain relievers, heroin, and synthetic opioids such as fentanyl—is a serious national crisis that affects public health as well as social and economic welfare. 
+                </p> 
+                <h1 style="color:white; font-size:30px;">References:</h1>
+                <h2 style="color:white; font-size:15px;">Github Link:</h2>
+                <ul style="color:white; font-size:15px;">
+                    <li><a style="color:white; font-size:15px;" href='https://github.com/Richag2/DrugOverdoseDeathsInUS' target='_blank'>CS416 Data Visualization project</a></li>
+                </ul>
+                <h2 style="color:white; font-size:15px;">Dataset Link:</h2>
+                <ul style="color:white; font-size:15px;">
+                    <li><a style="color:white; font-size:15px;" href='https://www.cdc.gov/drugoverdose/deaths/index.html' target='_blank'>Drug Overdose dataset by CDC</a></li>
+                </ul>
+                <h2 style="color:white; font-size:15px;">URL:</h2>
+                <ul style="color:white; font-size:15px;">
+                    <li><a style="color:white; font-size:15px;" href='https://richag2.github.io/DrugOverdoseDeathsInUS/' target='_blank'>Drug Overdose Deaths Visualization URL</a></li>
+                </ul>
+
+                <h2 style="color:white; font-size:15px;">Charts:</h2>
+                <ul style="color:white; font-size:15px;">
+                    <li><a style="color:white; font-size:15px;" href='https://github.com/bikramkawan/D3' target='_blank'>Multi-series Bar chart in D3 by Bikram Kawan</a></li>
+                    <li><a style="color:white; font-size:15px;" href='https://bl.ocks.org/john-guerra/0d81ccfd24578d5d563c55e785b3b40a' target='_blank'>
+                        Bubble Chart by John Alexis Guerra Gomez</a></li>
+                    <li><a style="color:white; font-size:15px;" href='https://vallandingham.me/bubble_charts_in_d3.html' target='_blank'>Animated Bubble Chart by Jim Vallandingham</a></li>
+                </ul>               
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tooltip-map">
+    <div class="row state-name"></div>
+    <div class="row totals"></div>
+    <div class="types"></div>
+</div>
+
+<div class="tooltip-bubble">
+    <div class="row state-name"></div>
+    <div class="row totals"></div>
+    <div class="types"></div>
+</div>
+
+<div class="tooltip-bar">
+
+    <div class="col top-three">
+        <div class="col-header">Top Three States</div>
+        <div class="row-content"></div>
+    </div>
+    <div class="col bottom-three">
+        <div class="col-header">Bottom Three States</div>
+        <div class="row-content"></div>
+    </div>
+
+</div>
+
+
+<script src="MapChart.js"></script>
+<script src="BubbleChart.js"></script>
+<script src="BarChart.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
